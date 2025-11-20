@@ -16,3 +16,34 @@
 {"timestamp": "2025-11-20 07:28:30,060", "level": "INFO", "logger": "nova.api", "message": "API call", "event_type": "api_call", "path": "/health", "method": "GET", "status_code": 200}
 {"timestamp": "2025-11-20 07:29:42,389", "level": "INFO", "logger": "nova.api", "message": "API call", "event_type": "api_call", "path": "/", "method": "GET", "status_code": 200}
 {"timestamp": "2025-11-20 07:29:42,391", "level": "INFO", "logger": "nova.api", "message": "API call", "event_type": "api_call", "path": "/favicon.ico", "method": "GET", "status_code": 404}
+{"timestamp": "2025-11-20 10:07:21,677", "level": "INFO", "logger": "nova.api", "message": "Nova shutdown", "event_type": "shutdown"}
+{"timestamp": "2025-11-20 10:07:21,979", "level": "INFO", "logger": "nova.api", "message": "Nova startup complete", "event_type": "startup"}
+{"timestamp": "2025-11-20 10:09:05,681", "level": "INFO", "logger": "nova.api", "message": "API call", "event_type": "api_call", "path": "/", "method": "GET", "status_code": 200}
+{"timestamp": "2025-11-20 10:09:17,267", "level": "INFO", "logger": "nova.api", "message": "API call", "event_type": "api_call", "path": "/health", "method": "GET", "status_code": 200}
+{"timestamp": "2025-11-20 10:09:28,004", "level": "INFO", "logger": "nova.api", "message": "API call", "event_type": "api_call", "path": "/status", "method": "GET", "status_code": 200}
+{"timestamp": "2025-11-20 10:11:02,913", "level": "INFO", "logger": "nova.api", "message": "Nova shutdown", "event_type": "shutdown"}
+{"timestamp": "2025-11-20 10:11:03,208", "level": "INFO", "logger": "nova.api", "message": "Nova startup complete", "event_type": "startup"}
+{"timestamp": "2025-11-20 10:11:18,091", "level": "INFO", "logger": "nova.api", "message": "API call", "event_type": "api_call", "path": "/status", "method": "GET", "status_code": 200}
+{"timestamp": "2025-11-20 10:13:20,835", "level": "INFO", "logger": "nova.api", "message": "Nova shutdown", "event_type": "shutdown"}
+{"timestamp": "2025-11-20 10:13:21,128", "level": "INFO", "logger": "nova.api", "message": "Nova startup complete", "event_type": "startup"}
+{"timestamp": "2025-11-20 10:15:35,278", "level": "INFO", "logger": "nova.api", "message": "API call", "event_type": "api_call", "path": "/health", "method": "GET", "status_code": 200}
+{"timestamp": "2025-11-20 10:15:44,904", "level": "INFO", "logger": "nova.api", "message": "Nova shutdown", "event_type": "shutdown"}
+{"timestamp": "2025-11-20 10:15:45,204", "level": "INFO", "logger": "nova.api", "message": "Nova startup complete", "event_type": "startup"}
+{"timestamp": "2025-11-20 10:15:52,298", "level": "INFO", "logger": "nova.api", "message": "API call", "event_type": "api_call", "path": "/health", "method": "GET", "status_code": 200}
+{"timestamp": "2025-11-20 10:17:36,663", "level": "INFO", "logger": "nova.api", "message": "Nova shutdown", "event_type": "shutdown"}
+{"timestamp": "2025-11-20 10:17:36,949", "level": "INFO", "logger": "nova.api", "message": "Nova startup complete", "event_type": "startup"}
+{"timestamp": "2025-11-20 10:19:04,010", "level": "INFO", "logger": "nova.api", "message": "Nova shutdown", "event_type": "shutdown"}
+{"timestamp": "2025-11-20 10:19:04,303", "level": "INFO", "logger": "nova.api", "message": "Nova startup complete", "event_type": "startup"}
+{"timestamp": "2025-11-20 10:19:19,541", "level": "INFO", "logger": "nova.api", "message": "API call", "event_type": "api_call", "path": "/health", "method": "GET", "status_code": 200}
+{"timestamp": "2025-11-20 10:19:49,454", "level": "INFO", "logger": "nova.api", "message": "API call", "event_type": "api_call", "path": "/health", "method": "GET", "status_code": 200}
+{"timestamp": "2025-11-20 10:19:49,462", "level": "INFO", "logger": "nova.api", "message": "API call", "event_type": "api_call", "path": "/status", "method": "GET", "status_code": 200}
+{"timestamp": "2025-11-20 10:19:49,470", "level": "INFO", "logger": "nova.api", "message": "API call", "event_type": "api_call", "path": "/version", "method": "GET", "status_code": 200}
+{"timestamp": "2025-11-20 10:24:30,800", "level": "INFO", "logger": "nova.api", "message": "Nova shutdown", "event_type": "shutdown"}
+{"timestamp": "2025-11-20 10:24:31,101", "level": "INFO", "logger": "nova.api", "message": "Nova startup complete", "event_type": "startup"}
+{"timestamp": "2025-11-20 10:24:37,306", "level": "INFO", "logger": "nova.api", "message": "API call", "event_type": "api_call", "path": "/does-not-exist", "method": "GET", "status_code": 404}
+{"timestamp": "2025-11-20 10:26:41,903", "level": "INFO", "logger": "nova.api", "message": "Nova shutdown", "event_type": "shutdown"}
+{"timestamp": "2025-11-20 10:26:42,136", "level": "INFO", "logger": "nova.api", "message": "Nova startup complete", "event_type": "startup"}
+{"timestamp": "2025-11-20 10:28:37,337", "level": "INFO", "logger": "nova.api", "message": "Nova shutdown", "event_type": "shutdown"}
+{"timestamp": "2025-11-20 10:28:37,570", "level": "INFO", "logger": "nova.api", "message": "Nova startup complete", "event_type": "startup"}
+{"timestamp": "2025-11-20 10:29:21,457", "level": "INFO", "logger": "nova.api", "message": "Nova shutdown", "event_type": "shutdown"}
+{"timestamp": "2025-11-20 10:29:33,310", "level": "INFO", "logger": "nova.api", "message": "Nova startup complete", "event_type": "startup"}
