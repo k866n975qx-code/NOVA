@@ -1,5 +1,3 @@
-
-
 from datetime import datetime, timezone
 
 from fastapi import APIRouter, Request
@@ -7,6 +5,7 @@ from fastapi import APIRouter, Request
 from app.config.settings import settings
 from app.models.base import BaseResponse, Meta
 from app.utils.logging_config import get_logger
+from app.utils.meta import build_meta
 
 
 router = APIRouter(tags=["core"])
@@ -20,17 +19,9 @@ async def actions_handshake(request: Request) -> BaseResponse:
     Returns Nova/Doc version info and supported high-level domains so that
     external tools (like ChatGPT Actions) can understand what Nova can do.
     """
-    now = datetime.now(timezone.utc)
     version = settings.version
 
-    meta = Meta(
-        timestamp=now,
-        request_id=None,  # can be filled by future middleware
-        nova_version=version.get("version"),
-        build=version.get("build"),
-        api_schema_version=version.get("api_schema_version"),
-        master_doc_version=version.get("master_doc_version"),
-    )
+    meta = build_meta()
 
     data = {
         "nova_version": version.get("version"),

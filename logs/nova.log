@@ -47,3 +47,76 @@
 {"timestamp": "2025-11-20 10:28:37,570", "level": "INFO", "logger": "nova.api", "message": "Nova startup complete", "event_type": "startup"}
 {"timestamp": "2025-11-20 10:29:21,457", "level": "INFO", "logger": "nova.api", "message": "Nova shutdown", "event_type": "shutdown"}
 {"timestamp": "2025-11-20 10:29:33,310", "level": "INFO", "logger": "nova.api", "message": "Nova startup complete", "event_type": "startup"}
+{"timestamp": "2025-11-20 10:30:16,328", "level": "INFO", "logger": "nova.actions", "message": "Actions handshake", "event_type": "actions_handshake", "path": "/actions/handshake"}
+{"timestamp": "2025-11-20 10:30:16,328", "level": "INFO", "logger": "nova.api", "message": "API call", "event_type": "api_call", "path": "/actions/handshake", "method": "GET", "status_code": 200}
+{"timestamp": "2025-11-20 11:46:09,688", "level": "INFO", "logger": "nova.api", "message": "Nova shutdown", "event_type": "shutdown"}
+{"timestamp": "2025-11-20 11:46:09,958", "level": "INFO", "logger": "nova.api", "message": "Nova startup complete", "event_type": "startup"}
+{"timestamp": "2025-11-20 11:49:00,714", "level": "INFO", "logger": "nova.api", "message": "Nova shutdown", "event_type": "shutdown"}
+{"timestamp": "2025-11-20 11:49:00,945", "level": "INFO", "logger": "nova.api", "message": "Nova startup complete", "event_type": "startup"}
+{"timestamp": "2025-11-20 11:49:08,763", "level": "DEBUG", "logger": "asyncio", "message": "Using selector: KqueueSelector"}
+{"timestamp": "2025-11-20 11:49:08,764", "level": "INFO", "logger": "nova.api", "message": "API call", "event_type": "api_call", "path": "/health", "method": "GET", "status_code": 200}
+{"timestamp": "2025-11-20 11:49:08,764", "level": "INFO", "logger": "httpx", "message": "HTTP Request: GET http://testserver/health \"HTTP/1.1 200 OK\""}
+{"timestamp": "2025-11-20 11:49:08,765", "level": "DEBUG", "logger": "asyncio", "message": "Using selector: KqueueSelector"}
+{"timestamp": "2025-11-20 11:49:08,766", "level": "INFO", "logger": "nova.api", "message": "API call", "event_type": "api_call", "path": "/status", "method": "GET", "status_code": 200}
+{"timestamp": "2025-11-20 11:49:08,766", "level": "INFO", "logger": "httpx", "message": "HTTP Request: GET http://testserver/status \"HTTP/1.1 200 OK\""}
+{"timestamp": "2025-11-20 11:49:08,766", "level": "DEBUG", "logger": "asyncio", "message": "Using selector: KqueueSelector"}
+{"timestamp": "2025-11-20 11:49:08,767", "level": "INFO", "logger": "nova.api", "message": "API call", "event_type": "api_call", "path": "/version", "method": "GET", "status_code": 200}
+{"timestamp": "2025-11-20 11:49:08,767", "level": "INFO", "logger": "httpx", "message": "HTTP Request: GET http://testserver/version \"HTTP/1.1 200 OK\""}
+{"timestamp": "2025-11-20 11:49:08,768", "level": "DEBUG", "logger": "asyncio", "message": "Using selector: KqueueSelector"}
+{"timestamp": "2025-11-20 11:49:08,768", "level": "INFO", "logger": "nova.actions", "message": "Actions handshake", "event_type": "actions_handshake", "path": "/actions/handshake"}
+{"timestamp": "2025-11-20 11:49:08,768", "level": "INFO", "logger": "nova.api", "message": "API call", "event_type": "api_call", "path": "/actions/handshake", "method": "GET", "status_code": 200}
+{"timestamp": "2025-11-20 11:49:08,768", "level": "INFO", "logger": "httpx", "message": "HTTP Request: GET http://testserver/actions/handshake \"HTTP/1.1 200 OK\""}
+{"timestamp": "2025-11-20 11:53:51,726", "level": "DEBUG", "logger": "asyncio", "message": "Using selector: KqueueSelector"}
+{"timestamp": "2025-11-20 11:53:51,727", "level": "INFO", "logger": "nova.api", "message": "API call", "event_type": "api_call", "path": "/health", "method": "GET", "status_code": 200}
+{"timestamp": "2025-11-20 11:53:51,728", "level": "INFO", "logger": "httpx", "message": "HTTP Request: GET http://testserver/health \"HTTP/1.1 200 OK\""}
+{"timestamp": "2025-11-20 11:53:51,728", "level": "DEBUG", "logger": "asyncio", "message": "Using selector: KqueueSelector"}
+{"timestamp": "2025-11-20 11:53:51,729", "level": "INFO", "logger": "nova.api", "message": "API call", "event_type": "api_call", "path": "/status", "method": "GET", "status_code": 200}
+{"timestamp": "2025-11-20 11:53:51,729", "level": "INFO", "logger": "httpx", "message": "HTTP Request: GET http://testserver/status \"HTTP/1.1 200 OK\""}
+{"timestamp": "2025-11-20 11:53:51,730", "level": "DEBUG", "logger": "asyncio", "message": "Using selector: KqueueSelector"}
+{"timestamp": "2025-11-20 11:53:51,730", "level": "INFO", "logger": "nova.api", "message": "API call", "event_type": "api_call", "path": "/version", "method": "GET", "status_code": 200}
+{"timestamp": "2025-11-20 11:53:51,731", "level": "INFO", "logger": "httpx", "message": "HTTP Request: GET http://testserver/version \"HTTP/1.1 200 OK\""}
+{"timestamp": "2025-11-20 11:53:51,731", "level": "DEBUG", "logger": "asyncio", "message": "Using selector: KqueueSelector"}
+{"timestamp": "2025-11-20 11:53:51,731", "level": "INFO", "logger": "nova.actions", "message": "Actions handshake", "event_type": "actions_handshake", "path": "/actions/handshake"}
+{"timestamp": "2025-11-20 11:53:51,731", "level": "INFO", "logger": "nova.api", "message": "API call", "event_type": "api_call", "path": "/actions/handshake", "method": "GET", "status_code": 200}
+{"timestamp": "2025-11-20 11:53:51,732", "level": "INFO", "logger": "httpx", "message": "HTTP Request: GET http://testserver/actions/handshake \"HTTP/1.1 200 OK\""}
+{"timestamp": "2025-11-20 11:53:58,444", "level": "DEBUG", "logger": "asyncio", "message": "Using selector: KqueueSelector"}
+{"timestamp": "2025-11-20 11:53:58,445", "level": "INFO", "logger": "nova.api", "message": "API call", "event_type": "api_call", "path": "/health", "method": "GET", "status_code": 200}
+{"timestamp": "2025-11-20 11:53:58,446", "level": "INFO", "logger": "httpx", "message": "HTTP Request: GET http://testserver/health \"HTTP/1.1 200 OK\""}
+{"timestamp": "2025-11-20 11:53:58,446", "level": "DEBUG", "logger": "asyncio", "message": "Using selector: KqueueSelector"}
+{"timestamp": "2025-11-20 11:53:58,447", "level": "INFO", "logger": "nova.api", "message": "API call", "event_type": "api_call", "path": "/status", "method": "GET", "status_code": 200}
+{"timestamp": "2025-11-20 11:53:58,447", "level": "INFO", "logger": "httpx", "message": "HTTP Request: GET http://testserver/status \"HTTP/1.1 200 OK\""}
+{"timestamp": "2025-11-20 11:53:58,448", "level": "DEBUG", "logger": "asyncio", "message": "Using selector: KqueueSelector"}
+{"timestamp": "2025-11-20 11:53:58,448", "level": "INFO", "logger": "nova.api", "message": "API call", "event_type": "api_call", "path": "/version", "method": "GET", "status_code": 200}
+{"timestamp": "2025-11-20 11:53:58,449", "level": "INFO", "logger": "httpx", "message": "HTTP Request: GET http://testserver/version \"HTTP/1.1 200 OK\""}
+{"timestamp": "2025-11-20 11:53:58,449", "level": "DEBUG", "logger": "asyncio", "message": "Using selector: KqueueSelector"}
+{"timestamp": "2025-11-20 11:53:58,449", "level": "INFO", "logger": "nova.actions", "message": "Actions handshake", "event_type": "actions_handshake", "path": "/actions/handshake"}
+{"timestamp": "2025-11-20 11:53:58,450", "level": "INFO", "logger": "nova.api", "message": "API call", "event_type": "api_call", "path": "/actions/handshake", "method": "GET", "status_code": 200}
+{"timestamp": "2025-11-20 11:53:58,450", "level": "INFO", "logger": "httpx", "message": "HTTP Request: GET http://testserver/actions/handshake \"HTTP/1.1 200 OK\""}
+{"timestamp": "2025-11-20 11:55:26,373", "level": "DEBUG", "logger": "asyncio", "message": "Using selector: KqueueSelector"}
+{"timestamp": "2025-11-20 11:55:26,374", "level": "INFO", "logger": "nova.api", "message": "API call", "event_type": "api_call", "path": "/health", "method": "GET", "status_code": 200}
+{"timestamp": "2025-11-20 11:55:26,374", "level": "INFO", "logger": "httpx", "message": "HTTP Request: GET http://testserver/health \"HTTP/1.1 200 OK\""}
+{"timestamp": "2025-11-20 11:55:26,375", "level": "DEBUG", "logger": "asyncio", "message": "Using selector: KqueueSelector"}
+{"timestamp": "2025-11-20 11:55:26,375", "level": "INFO", "logger": "nova.api", "message": "API call", "event_type": "api_call", "path": "/status", "method": "GET", "status_code": 200}
+{"timestamp": "2025-11-20 11:55:26,376", "level": "INFO", "logger": "httpx", "message": "HTTP Request: GET http://testserver/status \"HTTP/1.1 200 OK\""}
+{"timestamp": "2025-11-20 11:55:26,376", "level": "DEBUG", "logger": "asyncio", "message": "Using selector: KqueueSelector"}
+{"timestamp": "2025-11-20 11:55:26,377", "level": "INFO", "logger": "nova.api", "message": "API call", "event_type": "api_call", "path": "/version", "method": "GET", "status_code": 200}
+{"timestamp": "2025-11-20 11:55:26,377", "level": "INFO", "logger": "httpx", "message": "HTTP Request: GET http://testserver/version \"HTTP/1.1 200 OK\""}
+{"timestamp": "2025-11-20 11:55:26,378", "level": "DEBUG", "logger": "asyncio", "message": "Using selector: KqueueSelector"}
+{"timestamp": "2025-11-20 11:55:26,378", "level": "INFO", "logger": "nova.actions", "message": "Actions handshake", "event_type": "actions_handshake", "path": "/actions/handshake"}
+{"timestamp": "2025-11-20 11:55:26,378", "level": "INFO", "logger": "nova.api", "message": "API call", "event_type": "api_call", "path": "/actions/handshake", "method": "GET", "status_code": 200}
+{"timestamp": "2025-11-20 11:55:26,379", "level": "INFO", "logger": "httpx", "message": "HTTP Request: GET http://testserver/actions/handshake \"HTTP/1.1 200 OK\""}
+{"timestamp": "2025-11-20 11:55:39,978", "level": "INFO", "logger": "nova.api", "message": "Nova shutdown", "event_type": "shutdown"}
+{"timestamp": "2025-11-20 11:55:51,950", "level": "INFO", "logger": "nova.api", "message": "Nova startup complete", "event_type": "startup"}
+{"timestamp": "2025-11-20 11:55:57,646", "level": "DEBUG", "logger": "asyncio", "message": "Using selector: KqueueSelector"}
+{"timestamp": "2025-11-20 11:55:57,647", "level": "INFO", "logger": "nova.api", "message": "API call", "event_type": "api_call", "path": "/health", "method": "GET", "status_code": 200}
+{"timestamp": "2025-11-20 11:55:57,647", "level": "INFO", "logger": "httpx", "message": "HTTP Request: GET http://testserver/health \"HTTP/1.1 200 OK\""}
+{"timestamp": "2025-11-20 11:55:57,648", "level": "DEBUG", "logger": "asyncio", "message": "Using selector: KqueueSelector"}
+{"timestamp": "2025-11-20 11:55:57,649", "level": "INFO", "logger": "nova.api", "message": "API call", "event_type": "api_call", "path": "/status", "method": "GET", "status_code": 200}
+{"timestamp": "2025-11-20 11:55:57,649", "level": "INFO", "logger": "httpx", "message": "HTTP Request: GET http://testserver/status \"HTTP/1.1 200 OK\""}
+{"timestamp": "2025-11-20 11:55:57,649", "level": "DEBUG", "logger": "asyncio", "message": "Using selector: KqueueSelector"}
+{"timestamp": "2025-11-20 11:55:57,650", "level": "INFO", "logger": "nova.api", "message": "API call", "event_type": "api_call", "path": "/version", "method": "GET", "status_code": 200}
+{"timestamp": "2025-11-20 11:55:57,650", "level": "INFO", "logger": "httpx", "message": "HTTP Request: GET http://testserver/version \"HTTP/1.1 200 OK\""}
+{"timestamp": "2025-11-20 11:55:57,651", "level": "DEBUG", "logger": "asyncio", "message": "Using selector: KqueueSelector"}
+{"timestamp": "2025-11-20 11:55:57,651", "level": "INFO", "logger": "nova.actions", "message": "Actions handshake", "event_type": "actions_handshake", "path": "/actions/handshake"}
+{"timestamp": "2025-11-20 11:55:57,651", "level": "INFO", "logger": "nova.api", "message": "API call", "event_type": "api_call", "path": "/actions/handshake", "method": "GET", "status_code": 200}
+{"timestamp": "2025-11-20 11:55:57,652", "level": "INFO", "logger": "httpx", "message": "HTTP Request: GET http://testserver/actions/handshake \"HTTP/1.1 200 OK\""}

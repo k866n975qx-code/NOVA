@@ -14,7 +14,9 @@ logger = get_logger("nova.api")
 # Import settings AFTER logging is configured
 from app.config.settings import settings  # noqa: E402
 from app.models.base import BaseResponse, Meta, ErrorResponse, ErrorInfo  # noqa: E402
+
 from app.routers.core import router as core_router  # noqa: E402
+from app.utils.meta import build_meta  # noqa: E402
 
 
 # Track process start time for uptime calculations
@@ -116,17 +118,7 @@ async def health(request: Request):
 
     Used by Actions, systemd, and dashboards.
     """
-    now = datetime.now(timezone.utc)
-    version = getattr(app.state, "version_info", settings.version)
-
-    meta = Meta(
-        timestamp=now,
-        request_id=None,  # can be filled by future middleware
-        nova_version=version.get("version"),
-        build=version.get("build"),
-        api_schema_version=version.get("api_schema_version"),
-        master_doc_version=version.get("master_doc_version"),
-    )
+    meta = build_meta()
 
     return BaseResponse(
         status="ok",
