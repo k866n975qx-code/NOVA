@@ -1,5 +1,3 @@
-
-
 import pytest
 from fastapi.testclient import TestClient
 
@@ -32,12 +30,17 @@ def test_status_endpoint():
     assert response.status_code == 200
 
     body = response.json()
-    # Raw dict shape, not wrapped
-    for key in ["system", "version", "build", "environment", "status", "uptime_seconds"]:
-        assert key in body
+    # BaseResponse shape
+    assert body["status"] == "ok"
+    assert "data" in body
+    assert "meta" in body
 
-    assert isinstance(body["uptime_seconds"], int)
-    assert body["status"] == "online"
+    data = body["data"]
+    for key in ["system", "version", "build", "environment", "status", "uptime_seconds"]:
+        assert key in data
+
+    assert isinstance(data["uptime_seconds"], int)
+    assert data["status"] == "online"
 
 
 def test_version_endpoint():
@@ -45,8 +48,14 @@ def test_version_endpoint():
     assert response.status_code == 200
 
     body = response.json()
+    # BaseResponse shape
+    assert body["status"] == "ok"
+    assert "data" in body
+    assert "meta" in body
+
+    data = body["data"]
     for key in ["nova_version", "build_date", "api_schema_version", "master_doc_version"]:
-        assert key in body
+        assert key in data
 
 
 def test_actions_handshake_endpoint():

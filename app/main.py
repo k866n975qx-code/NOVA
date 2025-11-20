@@ -1,6 +1,7 @@
 from datetime import datetime, timezone
 
 from fastapi import FastAPI, Request, HTTPException
+from fastapi.encoders import jsonable_encoder
 from fastapi.responses import JSONResponse
 from fastapi.middleware.cors import CORSMiddleware
 from starlette.middleware.base import BaseHTTPMiddleware
@@ -96,20 +97,28 @@ async def on_shutdown() -> None:
     logger.info("Nova shutdown", extra={"event_type": "shutdown"})
 
 
-@app.get("/")
+@app.get("/", response_model=BaseResponse)
 async def root():
     """Root endpoint: basic Nova status.
 
-    Returns version info + simple online status.
+    Returns version info + simple online status, wrapped in BaseResponse.
     """
     version = getattr(app.state, "version_info", settings.version)
-    return {
+    meta = build_meta()
+
+    data = {
         "system": version["name"],
         "version": version["version"],
         "build": version["build"],
         "environment": settings.env,
         "status": "online",
     }
+
+    return BaseResponse(
+        status="ok",
+        data=data,
+        meta=meta,
+    )
 
 
 @app.get("/health", response_model=BaseResponse)
@@ -127,7 +136,7 @@ async def health(request: Request):
     )
 
 
-@app.get("/status")
+@app.get("/status", response_model=BaseResponse)
 async def status():
     """Status endpoint with version + uptime + environment.
 
@@ -139,7 +148,9 @@ async def status():
     now = datetime.now(timezone.utc)
     uptime_seconds = int((now - start_time).total_seconds())
 
-    return {
+    meta = build_meta()
+
+    data = {
         "system": version["name"],
         "version": version["version"],
         "build": version["build"],
@@ -148,8 +159,14 @@ async def status():
         "uptime_seconds": uptime_seconds,
     }
 
+    return BaseResponse(
+        status="ok",
+        data=data,
+        meta=meta,
+    )
 
-@app.get("/version")
+
+@app.get("/version", response_model=BaseResponse)
 async def version():
     """Version endpoint exposing Nova + schema metadata.
 
@@ -157,13 +174,20 @@ async def version():
     defaults if certain fields are not present yet.
     """
     version_info = getattr(app.state, "version_info", settings.version)
+    meta = build_meta()
 
-    return {
+    data = {
         "nova_version": version_info.get("version", "unknown"),
         "build_date": version_info.get("build_date", "unknown"),
         "api_schema_version": version_info.get("api_schema_version", "v1"),
         "master_doc_version": version_info.get("master_doc_version", "unknown"),
     }
+
+    return BaseResponse(
+        status="ok",
+        data=data,
+        meta=meta,
+    )
 
 
 @app.exception_handler(HTTPException)
@@ -172,17 +196,7 @@ async def http_exception_handler(request: Request, exc: HTTPException):
 
     Ensures all HTTP errors use the standard ErrorResponse wrapper.
     """
-    now = datetime.now(timezone.utc)
-    version = getattr(app.state, "version_info", settings.version)
-
-    meta = Meta(
-        timestamp=now,
-        request_id=None,  # can be filled by future middleware
-        nova_version=version.get("version"),
-        build=version.get("build"),
-        api_schema_version=version.get("api_schema_version"),
-        master_doc_version=version.get("master_doc_version"),
-    )
+    meta = build_meta()
 
     error = ErrorInfo(
         code=f"http_{exc.status_code}",
@@ -201,7 +215,7 @@ async def http_exception_handler(request: Request, exc: HTTPException):
 
     return JSONResponse(
         status_code=exc.status_code,
-        content=ErrorResponse(error=error, meta=meta).model_dump(),
+        content=jsonable_encoder(ErrorResponse(error=error, meta=meta)),
     )
 
 
@@ -212,17 +226,7 @@ async def unhandled_exception_handler(request: Request, exc: Exception):
     Prevents raw stack traces from leaking to clients and keeps error
     responses consistent.
     """
-    now = datetime.now(timezone.utc)
-    version = getattr(app.state, "version_info", settings.version)
-
-    meta = Meta(
-        timestamp=now,
-        request_id=None,
-        nova_version=version.get("version"),
-        build=version.get("build"),
-        api_schema_version=version.get("api_schema_version"),
-        master_doc_version=version.get("master_doc_version"),
-    )
+    meta = build_meta()
 
     error = ErrorInfo(
         code="internal_error",
@@ -240,5 +244,5 @@ async def unhandled_exception_handler(request: Request, exc: Exception):
 
     return JSONResponse(
         status_code=500,
-        content=ErrorResponse(error=error, meta=meta).model_dump(),
+        content=jsonable_encoder(ErrorResponse(error=error, meta=meta)),
     )
