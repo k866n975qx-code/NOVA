@@ -88,6 +88,7 @@ async def on_startup() -> None:
     )
 
 
+
 @app.on_event("shutdown")
 async def on_shutdown() -> None:
     """Shutdown hook for Nova core.
@@ -97,6 +98,7 @@ async def on_shutdown() -> None:
     logger.info("Nova shutdown", extra={"event_type": "shutdown"})
 
 
+# Core endpoints
 @app.get("/", response_model=BaseResponse)
 async def root():
     """Root endpoint: basic Nova status.
