@@ -68,6 +68,8 @@ def _build_env() -> Dict[str, str]:
     keys_of_interest = set(DEFAULTS.keys()) | set(REQUIRED_VARS_PROD) | {
         "LUNCHMONEY_API_KEY",
         "NOVA_ACTIONS_TOKEN",
+        "NOVA_DATABASE_URL",
+        "DATABASE_URL",
     }
     for key in keys_of_interest:
         if key in os.environ:
@@ -124,6 +126,11 @@ class Settings:
         self.lunchmoney_api_key: Optional[str] = env.get("LUNCHMONEY_API_KEY")
         # Optional Actions API token (for /actions/* auth in later phases)
         self.actions_api_token: Optional[str] = env.get("NOVA_ACTIONS_TOKEN")
+
+        # Optional database URL for PostgreSQL (used by Phase 2 DB layer)
+        self.database_url: Optional[str] = env.get("NOVA_DATABASE_URL") or env.get(
+            "DATABASE_URL"
+        )
 
         # Version metadata
         self.version: Dict[str, Any] = _load_version()
