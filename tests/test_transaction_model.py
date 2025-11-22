@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import sqlalchemy
 from sqlalchemy.engine import Engine
+from sqlalchemy.orm import sessionmaker
 
 from app.db import session as db_session
 from app.db.models.base import Base
@@ -70,3 +71,39 @@ def test_transactions_table_has_expected_columns(monkeypatch):
         "cleared_at",
     }
     assert expected.issubset(column_names)
+
+
+def test_create_and_query_transaction_round_trip(monkeypatch):
+    """
+    Round-trip test: create a Transaction, commit it, and query it back to verify
+    that the model works end-to-end with a real SQLAlchemy Session.
+    """
+    engine = _make_engine_sqlite_memory(monkeypatch)
+    Base.metadata.create_all(bind=engine)
+
+    SessionLocal = sessionmaker(bind=engine)
+
+    with SessionLocal() as session:
+        txn = Transaction(
+            source="lunchmoney",
+            external_id="txn_123",
+            account_external_id="acc_123",
+            amount=42.50,
+            currency="USD",
+            payee="Test Merchant",
+            category="Test Category",
+            notes="Test transaction",
+            is_pending=False,
+            is_transfer=False,
+        )
+        session.add(txn)
+        session.commit()
+        session.refresh(txn)
+
+        fetched = session.query(Transaction).filter_by(external_id="txn_123").one()
+
+        assert fetched.id == txn.id
+        assert fetched.amount == txn.amount
+        assert fetched.currency == "USD"
+        assert fetched.payee == "Test Merchant"
+        assert fetched.is_pending is False

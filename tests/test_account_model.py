@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import sqlalchemy
 from sqlalchemy.engine import Engine
+from sqlalchemy.orm import sessionmaker
 
 from app.db import session as db_session
 from app.db.models.base import Base
@@ -70,3 +71,37 @@ def test_accounts_table_has_expected_columns(monkeypatch):
         "last_synced_at",
     }
     assert expected.issubset(column_names)
+
+
+def test_create_and_query_account_round_trip(monkeypatch):
+    """
+    Round-trip test: create an Account, commit it, and query it back to verify
+    that the model works end-to-end with a real SQLAlchemy Session.
+    """
+    engine = _make_engine_sqlite_memory(monkeypatch)
+    Base.metadata.create_all(bind=engine)
+
+    SessionLocal = sessionmaker(bind=engine)
+
+    with SessionLocal() as session:
+        account = Account(
+            source="lunchmoney",
+            external_id="acc_123",
+            name="Test Checking",
+            type="cash",
+            subtype="checking",
+            currency="USD",
+            is_active=True,
+            is_excluded=False,
+            institution_name="Test Bank",
+        )
+        session.add(account)
+        session.commit()
+        session.refresh(account)
+
+        fetched = session.query(Account).filter_by(external_id="acc_123").one()
+
+        assert fetched.id == account.id
+        assert fetched.name == "Test Checking"
+        assert fetched.currency == "USD"
+        assert fetched.is_active is True

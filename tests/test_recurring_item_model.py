@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import sqlalchemy
 from sqlalchemy.engine import Engine
+from sqlalchemy.orm import sessionmaker
 
 from app.db import session as db_session
 from app.db.models.base import Base
@@ -72,3 +73,40 @@ def test_recurring_items_table_has_expected_columns(monkeypatch):
         "notes",
     }
     assert expected.issubset(column_names)
+
+
+def test_create_and_query_recurring_item_round_trip(monkeypatch):
+    """
+    Round-trip test: create a RecurringItem, commit it, and query it back to verify
+    that the model works end-to-end with a real SQLAlchemy Session.
+    """
+    engine = _make_engine_sqlite_memory(monkeypatch)
+    Base.metadata.create_all(bind=engine)
+
+    SessionLocal = sessionmaker(bind=engine)
+
+    with SessionLocal() as session:
+        item = RecurringItem(
+            source="lunchmoney",
+            external_id="rec_123",
+            name="Test Rent",
+            payee="Landlord",
+            category="Rent",
+            amount=1200.00,
+            currency="USD",
+            frequency="monthly",
+            is_active=True,
+            notes="Test recurring rent item",
+        )
+        session.add(item)
+        session.commit()
+        session.refresh(item)
+
+        fetched = session.query(RecurringItem).filter_by(external_id="rec_123").one()
+
+        assert fetched.id == item.id
+        assert fetched.name == "Test Rent"
+        assert fetched.amount == item.amount
+        assert fetched.currency == "USD"
+        assert fetched.frequency == "monthly"
+        assert fetched.is_active is True

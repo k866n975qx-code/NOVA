@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import sqlalchemy
 from sqlalchemy.engine import Engine
+from sqlalchemy.orm import sessionmaker
 
 from app.db import session as db_session
 from app.db.models.base import Base
@@ -69,3 +70,38 @@ def test_budgets_table_has_expected_columns(monkeypatch):
         "is_active",
     }
     assert expected.issubset(column_names)
+
+
+def test_create_and_query_budget_round_trip(monkeypatch):
+    """
+    Round-trip test: create a Budget, commit it, and query it back to verify
+    that the model works end-to-end with a real SQLAlchemy Session.
+    """
+    engine = _make_engine_sqlite_memory(monkeypatch)
+    Base.metadata.create_all(bind=engine)
+
+    SessionLocal = sessionmaker(bind=engine)
+
+    with SessionLocal() as session:
+        budget = Budget(
+            source="lunchmoney",
+            external_id="bud_123",
+            name="Test Groceries Budget",
+            category="Groceries",
+            period_start=None,
+            period_end=None,
+            limit_amount=300.00,
+            currency="USD",
+            is_active=True,
+        )
+        session.add(budget)
+        session.commit()
+        session.refresh(budget)
+
+        fetched = session.query(Budget).filter_by(external_id="bud_123").one()
+
+        assert fetched.id == budget.id
+        assert fetched.name == "Test Groceries Budget"
+        assert fetched.limit_amount == budget.limit_amount
+        assert fetched.currency == "USD"
+        assert fetched.is_active is True
